@@ -1,42 +1,313 @@
+:root {
+  /* Light Theme */
+  --primary: #16a34a;
+  --secondary: #e5e7eb;
+  --bg: #f9fafb;
+  --text: #111827;
+  --shadow: 0 2px 8px rgba(0,0,0,0.09);
+
+  /* Radio Sizes */
+  --radio-size: 1.5em;
+  --radio-border: 2.5px;
+  --radio-dot: 0.7em;
+  --radio-dot-offset: 0.27em;
+}
+
+[data-theme="dark"] {
+  --primary: #22d3ee;
+  --secondary: #1f2937;
+  --bg: #111827;
+  --text: #f9fafb;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100%;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  max-width: none;
+  width: 100vw;
+  background: var(--bg);
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--text);
+}
+
+header {
+  padding: 2rem 1rem 1rem 1rem;
   text-align: center;
+  background: var(--primary);
+  color: white;
+  border-radius: 0 0 1.5rem 1.5rem;
+  position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 1px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Theme Switcher */
+.theme-switch {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 22px;
+  background: #fff;
+  border: none;
+  border-radius: 22px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, border 0.2s;
+  outline: none;
+}
+
+.theme-switch-slider {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 18px;
+  height: 18px;
+  background: var(--primary);
+  border-radius: 50%;
+  transition: left 0.25s, background 0.2s;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.theme-switch.dark {
+  background: #1e293b;
+}
+
+.theme-switch.dark .theme-switch-slider {
+  left: 20px;
+  background: #22d3ee;
+}
+
+main {
+  flex: 1;
+  padding: 2rem 20vw 2rem 20vw;
+  overflow-y: auto;
+  transition: padding 0.2s;
+  background: var(--bg);
+}
+
+.loading, .empty {
+  text-align: center;
+  color: #6b7280;
+  margin-top: 2rem;
+}
+
+[data-theme="dark"] .loading,
+[data-theme="dark"] .empty {
+  color: #d1d5db;
+}
+
+.grocery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.grocery-list li {
+  display: flex;
+  align-items: center;
+  background: var(--secondary);
+  margin-bottom: 0.8rem;
+  border-radius: 2.5rem;
+  padding: 0.85rem 1.2rem;
+  font-size: 1.08rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: background 0.2s, color 0.2s;
+}
+
+.grocery-list li.checked {
+  background: #d1fae5;
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+[data-theme="dark"] .grocery-list li {
+  background: #273549;
+  color: var(--text);
+}
+
+[data-theme="dark"] .grocery-list li.checked {
+  background: #164e63;
+  color: #d1d5db;
+}
+
+/* Custom Radio Styles */
+.custom-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  width: 100%;
+}
+
+.custom-radio {
+  display: none;
+}
+
+.custom-radio-circle {
+  width: var(--radio-size);
+  height: var(--radio-size);
+  display: inline-block;
+  border: var(--radio-border) solid var(--primary);
+  border-radius: 50%;
+  position: relative;
+  transition: border-color 0.2s, background 0.2s;
+  margin-right: 0.2em;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+[data-theme="dark"] .custom-radio-circle {
+  background: #222c38;
+}
+
+.custom-radio:checked + .custom-radio-circle {
+  border-color: var(--primary);
+  background: #bbf7d0;
+}
+
+[data-theme="dark"] .custom-radio:checked + .custom-radio-circle {
+  background: #164e63;
+}
+
+.custom-radio:checked + .custom-radio-circle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: var(--radio-dot-offset);
+  left: var(--radio-dot-offset);
+  width: var(--radio-dot);
+  height: var(--radio-dot);
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+footer {
+  background: transparent;
+  position: sticky;
+  bottom: 0;
+  width: 100vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.8rem 0 1.5rem 0;
+  transition: padding 0.2s;
+  z-index: 10;
+}
+
+.add-bar {
+  display: flex;
+  background: #fff;
+  border-radius: 2rem;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+[data-theme="dark"] .add-bar {
+  background: #222c38;
+}
+
+.add-bar input[type="text"] {
+  flex: 1;
+  border: none;
+  padding: 1rem 1.2rem;
+  border-radius: 2rem 0 0 2rem;
+  font-size: 1.1rem;
+  background: var(--secondary);
+  color: var(--text);
+  outline: none;
+}
+
+[data-theme="dark"] .add-bar input[type="text"] {
+  background: #273549;
+  color: var(--text);
+}
+
+.add-bar .add-btn {
+  font-size: 2rem;
+  color: white;
+  background: var(--primary);
+  border: none;
+  border-radius: 0 2rem 2rem 0;
+  width: 3.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-bar .add-btn:disabled {
+  background: #a7f3d0;
+  cursor: not-allowed;
+}
+
+/* Add this for dark theme: */
+[data-theme="dark"] .add-bar .add-btn:disabled {
+  background: #164e63;
+  color: #64748b;
+}
+
+@media (max-width: 900px) {
+  main {
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
-  to {
-    transform: rotate(360deg);
+  .add-bar {
+    max-width: 100vw;
+    margin: 0 1vw;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 600px) {
+  .container {
+    width: 100vw;
+    border-radius: 0;
+    box-shadow: none;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  header {
+    border-radius: 0 0 1rem 1rem;
+  }
+  main {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  footer {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  }
+  .add-bar {
+    max-width: 100vw;
+    margin: 0 0.5rem;
+  }
 }
