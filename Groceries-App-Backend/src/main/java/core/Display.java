@@ -5,6 +5,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
 import software.amazon.awssdk.services.dynamodb.model.QueryResponse;
+import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
 
 import java.util.Map;
 import java.util.Objects;
@@ -23,11 +24,11 @@ public class Display {
 
     public JSONArray getItems() throws Exception {
 
-        QueryResponse response = db.query("checked", "false");
+        ScanResponse scanResponse = db.scan();
         JSONArray sendResponse = new JSONArray();
 
-        for (Map<String, AttributeValue> item : response.items()) {
-            if (String.valueOf(item.get("location")).equals(location)) {
+        for (Map<String, AttributeValue> item : scanResponse.items()) {
+            if (item.get("checked").s().equals("false") && item.get("location").s().equals(location)) {
 
                 JSONObject itemJSON = new JSONObject();
                 itemJSON.put("id", item.get("id").s());

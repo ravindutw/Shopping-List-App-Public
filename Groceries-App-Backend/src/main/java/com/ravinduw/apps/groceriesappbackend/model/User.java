@@ -1,25 +1,28 @@
 package com.ravinduw.apps.groceriesappbackend.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user_name;
+    private String username;
     private String name;
-    private String type;
+    private String role;
+    private String password;
 
-    public User() {}
-
-    public User(String userName, String name, String type) {
-        this.user_name = userName;
+    public User(String username, String name, String role) {
+        this.username = username;
         this.name = name;
-        this.type = type;
+        this.role = role;
     }
 
     public Long getId() {
@@ -30,12 +33,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getName() {
@@ -46,11 +49,18 @@ public class User {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getRole() {
+        return role;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

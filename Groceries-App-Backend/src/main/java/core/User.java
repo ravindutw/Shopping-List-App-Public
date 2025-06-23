@@ -6,7 +6,7 @@ package core;
     protected String type;
 
     User(String userName) {
-        userName = userName;
+        this.userName = userName;
     }
 
     public String getUserName() {

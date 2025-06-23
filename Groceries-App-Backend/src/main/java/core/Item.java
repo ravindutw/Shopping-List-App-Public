@@ -25,9 +25,11 @@ public class Item {
         date = Utils.getDateAndTime();
     }
 
-    public void newItem(String name) throws Exception {
+    public void newItem(String name, String location) throws Exception {
 
         this.name = name;
+        this.location = location;
+        id = Utils.generateRandomID();
 
         DynamoDBAttributeValueHandler attributes = new DynamoDBAttributeValueHandler();
 

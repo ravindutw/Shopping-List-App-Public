@@ -1,5 +1,7 @@
 package com.ravinduw.apps.groceriesappbackend;
 
+import com.ravinduw.apps.groceriesappbackend.model.ItemRequest;
+import com.ravinduw.apps.groceriesappbackend.model.ToggleRequest;
 import core.Display;
 import core.Item;
 import core.RegularUser;
@@ -22,11 +24,13 @@ import java.util.Map;
 public class APIController {
 
     @GetMapping("/groceries")
-    public JSONArray getGroceries(HttpServletRequest request) {
+    public String  getGroceries(HttpServletRequest request) {
 
-        Display display = new Display(null, "HKU");
+        RegularUser user = new RegularUser("admin");
+
+        Display display = new Display(user, "HKU");
         try {
-            return display.getItems();
+            return String.valueOf(display.getItems());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,13 +40,14 @@ public class APIController {
     }
 
     @PostMapping("/groceries/add")
-    public ResponseEntity<String> addGroceries(@RequestBody JSONObject requestBody, HttpServletResponse response) {
+    public ResponseEntity<String> addGroceries(@RequestBody ItemRequest request, HttpServletResponse response) {
 
-        String name = requestBody.getString("name");
+        System.out.println(request.getName());
+        String name = request.getName();
         RegularUser user = new RegularUser("admin");
         try {
             Item item = new Item(user);
-            item.newItem(name);
+            item.newItem(name, "HKU");
             return new ResponseEntity<>("Item added successfully", HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,9 +56,9 @@ public class APIController {
     }
 
     @PostMapping("/groceries/toggle")
-    public ResponseEntity<String> toggleItem(@RequestBody JSONObject requestBody, HttpServletResponse response) {
+    public ResponseEntity<String> toggleItem(@RequestBody ToggleRequest request, HttpServletResponse response) {
 
-        String id = requestBody.getString("id");
+        String id = request.getId();
         RegularUser user = new RegularUser("admin");
 
         try {
