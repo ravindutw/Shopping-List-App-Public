@@ -37,9 +37,10 @@ public class APIController {
 
     @PostMapping("/groceries/add")
     public ResponseEntity<String> addGroceries(@RequestBody JSONObject requestBody, HttpServletResponse response) {
+
+        String name = requestBody.getString("name");
+        RegularUser user = new RegularUser("admin");
         try {
-            String name = requestBody.getString("name");
-            RegularUser user = new RegularUser("admin");
             Item item = new Item(user);
             item.newItem(name);
             return new ResponseEntity<>("Item added successfully", HttpStatus.OK);
@@ -47,6 +48,23 @@ public class APIController {
             e.printStackTrace();
             return new ResponseEntity<>("Error occurred while adding item", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @PostMapping("/groceries/toggle")
+    public ResponseEntity<String> toggleItem(@RequestBody JSONObject requestBody, HttpServletResponse response) {
+
+        String id = requestBody.getString("id");
+        RegularUser user = new RegularUser("admin");
+
+        try {
+            Item item = new Item(id, user);
+            item.checkItem();
+            return new ResponseEntity<>("Item toggled successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Error occurred while toggling item", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
     }
 
 }
