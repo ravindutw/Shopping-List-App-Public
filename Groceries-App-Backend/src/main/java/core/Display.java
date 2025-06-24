@@ -1,23 +1,22 @@
 package core;
 
+import com.ravinduw.apps.groceriesappbackend.model.User;
 import dynamodbpkg.DynamoDBHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import software.amazon.awssdk.services.dynamodb.model.AttributeValue;
-import software.amazon.awssdk.services.dynamodb.model.QueryResponse;
 import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class Display {
 
-    private RegularUser user;
+    private User user;
     private String location;
     private final String dbName = "groceries-app-db";
     private final DynamoDBHandler db = new DynamoDBHandler(dbName);
 
-    public Display(RegularUser user, String location) {
+    public Display(User user, String location) {
         this.user = user;
         this.location = location;
     }

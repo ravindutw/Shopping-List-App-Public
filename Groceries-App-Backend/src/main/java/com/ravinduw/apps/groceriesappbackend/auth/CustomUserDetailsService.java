@@ -1,13 +1,14 @@
-package com.ravinduw.apps.groceriesappbackend;
+package com.ravinduw.apps.groceriesappbackend.auth;
 
 import com.ravinduw.apps.groceriesappbackend.model.User;
 import com.ravinduw.apps.groceriesappbackend.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.*;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.List;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
@@ -22,10 +23,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         if (user == null) throw new UsernameNotFoundException("User not found");
 
+        GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole());
+
         return new org.springframework.security.core.userdetails.User(
                 user.getUsername(),
                 user.getPassword(),
-                Collections.singletonList(new SimpleGrantedAuthority(user.getRole()))
+                List.of(authority)
         );
 
     }

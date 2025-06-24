@@ -18,6 +18,7 @@ public class User {
     private String name;
     private String role;
     private String password;
+    private String location;
 
     public User(String username, String name, String role) {
         this.username = username;
@@ -62,5 +63,12 @@ public class User {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

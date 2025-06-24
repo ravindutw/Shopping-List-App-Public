@@ -1,5 +1,6 @@
 package core;
 
+import com.ravinduw.apps.groceriesappbackend.model.User;
 import dynamodbpkg.DynamoDBAttributeValueHandler;
 import dynamodbpkg.DynamoDBHandler;
 import utils.Utils;
@@ -9,17 +10,17 @@ public class Item {
     private String id;
     private String name;
     private String date;
-    private RegularUser user;
+    private User user;
     private String location;
     private final String dbName = "groceries-app-db";
     private final DynamoDBHandler db = new DynamoDBHandler(dbName);
 
-    public Item(RegularUser user) {
+    public Item(User user) {
         this.user = user;
         date = Utils.getDateAndTime();
     }
 
-    public Item(String id, RegularUser user) {
+    public Item(String id, User user) {
         this.id = id;
         this.user = user;
         date = Utils.getDateAndTime();
@@ -34,10 +35,10 @@ public class Item {
         DynamoDBAttributeValueHandler attributes = new DynamoDBAttributeValueHandler();
 
         attributes.addStringAttribute("id", id);
-        attributes.addStringAttribute("name", name);
+        attributes.addStringAttribute("name", this.name);
         attributes.addStringAttribute("created_date", date);
-        attributes.addStringAttribute("created_user", user.getUserName());
-        attributes.addStringAttribute("location", location);
+        attributes.addStringAttribute("created_user", user.getUsername());
+        attributes.addStringAttribute("location", this.location);
         attributes.addStringAttribute("checked", "false");
 
         db.putItem(attributes);
@@ -51,7 +52,7 @@ public class Item {
 
         keyAttributes.addStringAttribute("id", id);
         attributes.addStringUpdateAttribute("checked", "true");
-        attributes.addStringUpdateAttribute("checked_user", user.getUserName());
+        attributes.addStringUpdateAttribute("checked_user", user.getUsername());
         attributes.addStringUpdateAttribute("checked_date", date);
 
         db.updateItem(keyAttributes, attributes);
