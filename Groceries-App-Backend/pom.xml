@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ravinduw.apps.groceries</groupId>
     <artifactId>Groceries-App-Backend</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <name>Groceries-App-Backend</name>
     <description>Groceries-App-Backend</description>
     <url/>

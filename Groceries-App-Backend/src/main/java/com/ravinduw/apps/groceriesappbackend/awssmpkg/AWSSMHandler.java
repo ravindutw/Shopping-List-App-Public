@@ -66,7 +66,34 @@ public class AWSSMHandler {
             return null;
         }
 
+    }
 
+    public static String getRememberMeKey() {
+
+        String secretName = "prod/App/Keys";
+        Region region = Region.of("ap-southeast-1");
+
+        // Create a Secrets Manager client
+        SecretsManagerClient client = SecretsManagerClient.builder()
+                .region(region)
+                .build();
+
+        GetSecretValueRequest getSecretValueRequest = GetSecretValueRequest.builder()
+                .secretId(secretName)
+                .build();
+
+        GetSecretValueResponse getSecretValueResponse;
+
+        try {
+            getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
+            String secret = getSecretValueResponse.secretString();
+            JSONObject secretJSON = new JSONObject(secret);
+            return secretJSON.getString("groceries-app/rme/key");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
 
     }
 
