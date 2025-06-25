@@ -6,11 +6,11 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.3</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.ravinduw.apps.groceries</groupId>
     <artifactId>Groceries-App-Backend</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <name>Groceries-App-Backend</name>
     <description>Groceries-App-Backend</description>
     <url/>
@@ -90,17 +90,13 @@
             <artifactId>secretsmanager</artifactId>
             <version>2.31.26</version>
         </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>io.awspring.cloud</groupId>
-            <artifactId>spring-cloud-aws-starter</artifactId>
-            <version>3.4.0</version>
-        </dependency>
     </dependencies>
 
     <build>
