@@ -1,6 +1,6 @@
 package core;
 
-import com.ravinduw.apps.groceriesappbackend.model.User;
+import com.ravinduw.apps.groceriesappbackend.entity.User;
 import dynamodbpkg.DynamoDBHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;

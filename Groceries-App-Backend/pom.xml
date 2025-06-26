@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.ravinduw.apps.groceries</groupId>
     <artifactId>Groceries-App-Backend</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <name>Groceries-App-Backend</name>
     <description>Groceries-App-Backend</description>
     <url/>
@@ -76,19 +76,19 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
-            <version>2.31.26</version>
+            <version>2.31.70</version>
         </dependency>
 
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20250107</version>
+            <version>20250517</version>
         </dependency>
 
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>secretsmanager</artifactId>
-            <version>2.31.26</version>
+            <version>2.31.70</version>
         </dependency>
 
         <dependency>

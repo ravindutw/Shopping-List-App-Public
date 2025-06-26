@@ -1,6 +1,6 @@
 package core;
 
-import com.ravinduw.apps.groceriesappbackend.model.User;
+import com.ravinduw.apps.groceriesappbackend.entity.User;
 import dynamodbpkg.DynamoDBAttributeValueHandler;
 import dynamodbpkg.DynamoDBHandler;
 import utils.Utils;

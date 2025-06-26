@@ -1,9 +1,9 @@
 package com.ravinduw.apps.groceriesappbackend;
 
 import com.ravinduw.apps.groceriesappbackend.auth.AuthUtils;
-import com.ravinduw.apps.groceriesappbackend.model.ItemRequest;
-import com.ravinduw.apps.groceriesappbackend.model.ToggleRequest;
-import com.ravinduw.apps.groceriesappbackend.model.User;
+import com.ravinduw.apps.groceriesappbackend.entity.ItemRequest;
+import com.ravinduw.apps.groceriesappbackend.entity.ToggleRequest;
+import com.ravinduw.apps.groceriesappbackend.entity.User;
 import com.ravinduw.apps.groceriesappbackend.repository.UserRepo;
 import org.springframework.security.web.csrf.CsrfToken;
 import core.Display;

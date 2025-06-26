@@ -1,6 +1,6 @@
 package com.ravinduw.apps.groceriesappbackend.auth;
 
-import com.ravinduw.apps.groceriesappbackend.model.User;
+import com.ravinduw.apps.groceriesappbackend.entity.User;
 import com.ravinduw.apps.groceriesappbackend.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

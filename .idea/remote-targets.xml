@@ -2,7 +2,7 @@
 <project version="4">
   <component name="RemoteTargetsManager">
     <targets>
-      <target name="ubuntu@ec2-18-143-61-218.ap-southeast-1.compute.amazonaws.com:22" type="ssh/sftp" uuid="b22624e4-c323-40c1-8697-3c5d4993c56b">
+      <target name="ubuntu@ec2-18-143-61-218.ap-southeast-1.compute.amazonaws.com:23" type="ssh/sftp" uuid="3deb217c-2cae-4a4b-8801-41033dfcdea3">
         <config>
           <option name="projectRootOnTarget" value="/home/ubuntu/Groceries-App" />
           <option name="serverName" value="ubuntu@ec2-18-143-61-218.ap-southeast-1.compute.amazonaws.com:22 key" />
