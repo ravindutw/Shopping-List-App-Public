@@ -1,12 +1,10 @@
 package com.ravinduw.apps.groceriesappbackend.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+@Data
 public class ToggleRequest {
 
-    @Getter
-    @Setter
     private String id;
 
 }

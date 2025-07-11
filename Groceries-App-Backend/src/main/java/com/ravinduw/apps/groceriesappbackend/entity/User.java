@@ -3,6 +3,9 @@ package com.ravinduw.apps.groceriesappbackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -11,35 +14,22 @@ import lombok.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    @Setter
-    private Long id;
+    @Column(name = "user_id")
+    private String userId;
 
-    @Getter
-    @Setter
-    private String username;
+    @Column(name = "username")
+    private String userName;
 
-    @Getter
-    @Setter
+    @Column(name = "name")
     private String name;
 
-    @Getter
-    @Setter
+    @Column(name = "role")
     private String role;
 
-    @Getter
-    @Setter
+    @Column(name = "password")
     private String password;
 
-    @Getter
-    @Setter
-    private String location;
-
-    public User(String username, String name, String role) {
-        this.username = username;
-        this.name = name;
-        this.role = role;
-    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Location> locations = new ArrayList<>();
 
 }

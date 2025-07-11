@@ -1,11 +1,11 @@
-package core;
+package service;
 
 import com.ravinduw.apps.groceriesappbackend.entity.User;
 import dynamodbpkg.DynamoDBAttributeValueHandler;
 import dynamodbpkg.DynamoDBHandler;
 import utils.Utils;
 
-public class Item {
+public class ItemService {
 
     private String id;
     private String name;
@@ -15,12 +15,12 @@ public class Item {
     private final String dbName = "groceries-app-db";
     private final DynamoDBHandler db = new DynamoDBHandler(dbName);
 
-    public Item(User user) {
+    public ItemService(User user) {
         this.user = user;
         date = Utils.getDateAndTime();
     }
 
-    public Item(String id, User user) {
+    public ItemService(String id, User user) {
         this.id = id;
         this.user = user;
         date = Utils.getDateAndTime();

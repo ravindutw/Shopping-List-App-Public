@@ -1,4 +1,4 @@
-package core;
+package service;
 
 import com.ravinduw.apps.groceriesappbackend.entity.User;
 import dynamodbpkg.DynamoDBHandler;
@@ -9,14 +9,14 @@ import software.amazon.awssdk.services.dynamodb.model.ScanResponse;
 
 import java.util.Map;
 
-public class Display {
+public class DisplayService {
 
     private User user;
     private String location;
     private final String dbName = "groceries-app-db";
     private final DynamoDBHandler db = new DynamoDBHandler(dbName);
 
-    public Display(User user, String location) {
+    public DisplayService(User user, String location) {
         this.user = user;
         this.location = location;
     }

@@ -45,6 +45,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                         .requestMatchers("/app-api/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/csrf-token").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/admin-api/**").hasRole("ADMIN")
+                        .requestMatchers("/admin-portal/**").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .formLogin(formLogin -> formLogin
