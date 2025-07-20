@@ -38,7 +38,6 @@ public class AppAPIController {
                 throw new Exception("Name cannot be empty or blank");
             }
 
-            //ItemService itemService = new ItemService(user);
             itemService.newItem(user, name, "HKU");
             return new ResponseEntity<>("ItemService added successfully", HttpStatus.OK);
 
@@ -62,7 +61,6 @@ public class AppAPIController {
                 throw new Exception("ID cannot be empty or blank");
             }
 
-            //ItemService itemService = new ItemService(id, user);
             itemService.checkItem(id, user);
             return new ResponseEntity<>("ItemService toggled successfully", HttpStatus.OK);
 
@@ -79,7 +77,6 @@ public class AppAPIController {
     public ResponseEntity<String> getGroceries(HttpServletRequest request) {
 
         User user = userRepo.findByUserName(AuthUtils.getUserName());
-        //DisplayService displayService = new DisplayService(user, locationId);
 
         try {
 

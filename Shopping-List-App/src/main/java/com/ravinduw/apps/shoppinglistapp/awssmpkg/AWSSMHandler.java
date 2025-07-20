@@ -42,7 +42,7 @@ public class AWSSMHandler {
 
     private JSONObject getSecret() {
 
-        String secretName = "prod/GrApp/DB";
+        String secretName = "prod/RWApps/DB";
         Region region = Region.of("ap-southeast-1");
 
         // Create a Secrets Manager client
