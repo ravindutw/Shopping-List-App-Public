@@ -42,8 +42,8 @@ public class AWSSMHandler {
 
     private JSONObject getSecret() {
 
-        String secretName = "prod/RWApps/DB";
-        Region region = Region.of("ap-southeast-1");
+        String secretName = "Replace with secret name"; // Replace with your actual secret name
+        Region region = Region.of("ap-southeast-1"); // Replace with your actual region
 
         // Create a Secrets Manager client
         SecretsManagerClient client = SecretsManagerClient.builder()
@@ -70,8 +70,8 @@ public class AWSSMHandler {
 
     public static String getRememberMeKey() {
 
-        String secretName = "prod/App/Keys";
-        Region region = Region.of("ap-southeast-1");
+        String secretName = "Replace with secret name"; // Replace with your actual secret name
+        Region region = Region.of("ap-southeast-1"); // Replace with your actual region
 
         // Create a Secrets Manager client
         SecretsManagerClient client = SecretsManagerClient.builder()
@@ -88,7 +88,7 @@ public class AWSSMHandler {
             getSecretValueResponse = client.getSecretValue(getSecretValueRequest);
             String secret = getSecretValueResponse.secretString();
             JSONObject secretJSON = new JSONObject(secret);
-            return secretJSON.getString("groceries-app/rme/key");
+            return secretJSON.getString("Replace with your AWS key alias"); // Replace with your actual key alias
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

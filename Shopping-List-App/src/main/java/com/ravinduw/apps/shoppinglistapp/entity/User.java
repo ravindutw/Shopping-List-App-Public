@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "s_app_users")
+@Table(name = "ReplaceWithYourTableName") // Replace with your actual table name
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

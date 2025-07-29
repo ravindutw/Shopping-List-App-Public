@@ -11,7 +11,7 @@ import utils.Utils;
 @NoArgsConstructor
 public class ItemService {
 
-    private final String dbName = "groceries-app-db";
+    private final String dbName = "Replace with your DynamoDB table name"; // Replace with your DynamoDB table name
     private final DynamoDBHandler db = new DynamoDBHandler(dbName);
 
     public void newItem(User user, String name, String location) throws Exception {

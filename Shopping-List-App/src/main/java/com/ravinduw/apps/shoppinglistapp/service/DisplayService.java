@@ -14,7 +14,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class DisplayService {
 
-    private final String dbName = "groceries-app-db";
+    private final String dbName = "Replace with your DynamoDB table name"; // Replace with your DynamoDB table name
     private final DynamoDBHandler db = new DynamoDBHandler(dbName);
 
     public JSONArray getItems() throws Exception {
