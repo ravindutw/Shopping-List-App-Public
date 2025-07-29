@@ -1,11 +1,11 @@
 package com.ravinduw.apps.shoppinglistapp.service;
 
 import com.ravinduw.apps.shoppinglistapp.entity.User;
-import dynamodbpkg.DynamoDBAttributeValueHandler;
-import dynamodbpkg.DynamoDBHandler;
+import com.ravinduw.apps.shoppinglistapp.dynamodbpkg.DynamoDBAttributeValueHandler;
+import com.ravinduw.apps.shoppinglistapp.dynamodbpkg.DynamoDBHandler;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
-import utils.Utils;
+import com.ravinduw.apps.shoppinglistapp.utils.Utils;
 
 @Service
 @NoArgsConstructor

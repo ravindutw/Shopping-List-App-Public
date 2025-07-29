@@ -6,7 +6,7 @@ import com.ravinduw.apps.shoppinglistapp.repository.UserRepo;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import utils.Utils;
+import com.ravinduw.apps.shoppinglistapp.utils.Utils;
 
 @Service
 @NoArgsConstructor

@@ -1,6 +1,6 @@
 package com.ravinduw.apps.shoppinglistapp.service;
 
-import dynamodbpkg.DynamoDBHandler;
+import com.ravinduw.apps.shoppinglistapp.dynamodbpkg.DynamoDBHandler;
 import lombok.NoArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;

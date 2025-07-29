@@ -1,4 +1,4 @@
-package utils;
+package com.ravinduw.apps.shoppinglistapp.utils;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;

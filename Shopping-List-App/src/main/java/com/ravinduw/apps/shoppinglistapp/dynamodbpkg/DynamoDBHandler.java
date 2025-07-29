@@ -1,4 +1,4 @@
-package dynamodbpkg;
+package com.ravinduw.apps.shoppinglistapp.dynamodbpkg;
 
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
