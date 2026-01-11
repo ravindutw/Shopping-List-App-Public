@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.middleware.csrf import get_token
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.contrib.auth.hashers import make_password
@@ -126,10 +126,7 @@ def fetch_groceries(request):
 def create_new_user(request):
     """Create a new user (admin only)"""
     if request.user.role != 'ADMIN':
-        return JsonResponse(
-            {'error': 'Unauthorized'},
-            status=403
-        )
+        return HttpResponse('Unauthorized', status=403)
     
     try:
         data = json.loads(request.body)
@@ -139,17 +136,11 @@ def create_new_user(request):
         password = data.get('password', '').strip()
         
         if not username or not name or not password:
-            return JsonResponse(
-                {'error': 'All fields are required'},
-                status=400
-            )
+            return HttpResponse('All fields are required', status=400)
         
         # Check if username already exists
         if User.objects.filter(username=username).exists():
-            return JsonResponse(
-                {'error': 'Username already exists'},
-                status=400
-            )
+            return HttpResponse('Username already exists', status=400)
         
         # Get last user ID and generate next one
         last_user = User.objects.order_by('-user_id').first()
@@ -168,14 +159,8 @@ def create_new_user(request):
         user.set_password(password)
         user.save()
         
-        return JsonResponse(
-            {'message': 'User created successfully'},
-            status=200
-        )
+        return HttpResponse('User created successfully', status=200)
     except Exception as e:
         print(f"Error creating user: {str(e)}")
-        return JsonResponse(
-            {'error': 'Error occurred while creating user'},
-            status=500
-        )
+        return HttpResponse('Error occurred while creating user', status=500)
 
