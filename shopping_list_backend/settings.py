@@ -59,7 +59,10 @@ ROOT_URLCONF = 'shopping_list_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'Shopping-List-App/src/main/resources/templates')],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'Shopping-List-App/src/main/resources/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
